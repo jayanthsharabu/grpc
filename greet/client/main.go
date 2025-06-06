@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	pb "github.com/jayanthsharabu/grpc/greet/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -16,5 +17,9 @@ func main() {
 		log.Fatalf("Failed to dial to %v\n", err)
 	}
 	defer conn.Close()
+
+	c := pb.NewGreetServiceClient(conn)
+
+	doGreet(c)
 
 }

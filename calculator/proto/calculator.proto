@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "github.com/jayanthsharabu/grpc/calculator/proto";
+
+
+import "Sum.proto";
+
+service CalculatorService {
+    rpc Sum(SumRequest) returns (SumResponse);
+}
