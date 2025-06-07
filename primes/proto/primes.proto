@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package greet;
+
+option go_package = "github.com/jayanthsharabu/grpc/primes/proto";
+
+
+message NumRequest {
+    int32 num = 1;
+}
+
+message PrimesResponse {
+    int32 result = 1;
+}
+
+service PrimesService {
+    rpc Primes(NumRequest) returns (stream PrimesResponse);
+}

@@ -8,14 +8,14 @@ import (
 	pb "github.com/jayanthsharabu/grpc/greet/proto"
 )
 
-func doGreetMany(c *pb.GreetServiceClient) {
+func doGreetMany(c pb.GreetServiceClient) {
 	log.Println("doGreetmany got invoked")
 
 	req := &pb.GreetRequest{
 		Name: "Jay",
 	}
 
-	stream, err := (*c).GreetMany(context.Background(), req)
+	stream, err := (c).GreetMany(context.Background(), req)
 
 	if err != nil {
 		log.Fatalf("There is an error: %v", err)

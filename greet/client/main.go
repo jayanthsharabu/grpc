@@ -20,6 +20,6 @@ func main() {
 
 	c := pb.NewGreetServiceClient(conn)
 
-	doGreetMany(&c)
+	doGreetMany(c)
 
 }
