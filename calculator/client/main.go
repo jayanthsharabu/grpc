@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	pb "github.com/jayanthsharabu/grpc/Calculator/proto"
+	pb "github.com/jayanthsharabu/grpc/calculator/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -20,6 +20,6 @@ func main() {
 
 	c := pb.NewCalculatorServiceClient(conn)
 
-	doSum(c)
+	doMax(c)
 
 }

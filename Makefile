@@ -37,8 +37,8 @@ else
 endif
 
 .DEFAULT_GOAL := help
-.PHONY: greet blog calculator primes help
-project := greet calculator blog primes
+.PHONY: greet blog calculator primes avg help
+project := greet calculator blog primes avg
 all: $(project) ## Generate Pbs and build
 
 
@@ -46,7 +46,7 @@ greet: $@ ## Generate Pbs and build for greet
 calculator: $@ ## Generate Pbs and build for calculator
 blog: $@ ## Generate Pbs and build for blog
 primes: $@ ## Generate Pbs and build for primes
-
+avg: $@ ## Generate Pbs and build for avg
 $(project):
 	@${CHECK_DIR_CMD}
 	protoc -I$@/${PROTO_DIR} --go_opt=module=${PACKAGE} --go_out=. --go-grpc_opt=module=${PACKAGE} --go-grpc_out=. $@/${PROTO_DIR}/*.proto
@@ -57,7 +57,7 @@ $(project):
 test: all ## Launch tests
 	go test ./...
 
-clean: clean_greet clean_calculator clean_blog ## Clean generated files
+clean: clean_greet clean_calculator clean_blog clean_primes clean_avg ## Clean generated files
 	${RM_F_CMD} ssl/*.crt
 	${RM_F_CMD} ssl/*.csr
 	${RM_F_CMD} ssl/*.key
@@ -72,6 +72,9 @@ clean_calculator: ## Clean generated files for calculator
 
 clean_primes: ## Clean generated files for primes
 	${RM_F_CMD} primes/${PROTO_DIR}/*.pb.go
+
+clean_avg: ## Clean generated files for avg
+	${RM_F_CMD} avg/${PROTO_DIR}/*.pb.go
 
 clean_blog: ## Clean generated files for blog
 	${RM_F_CMD} blog/${PROTO_DIR}/*.pb.go

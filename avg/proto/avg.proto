@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package avg;
+
+option go_package = "github.com/jayanthsharabu/grpc/avg/proto";
+
+
+message NumsRequest {
+    int32 num = 1;
+}
+
+message AvgResponse {
+    int32 result = 1;
+}
+
+service AvgService {
+    rpc AvgCal(stream NumsRequest) returns (AvgResponse);
+}

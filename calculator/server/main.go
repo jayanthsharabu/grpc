@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/jayanthsharabu/grpc/Calculator/proto"
+	pb "github.com/jayanthsharabu/grpc/calculator/proto"
 	"google.golang.org/grpc"
 )
 
@@ -25,7 +25,7 @@ func main() {
 	log.Printf("Listening on %s\n", addr)
 
 	s := grpc.NewServer()
-	pb.RegisterCalculatorServiceServer(s, &Server{})
+	pb.RegisterCalculatorServiceServer(s, Server{})
 
 	if err = s.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve %v\n", addr)

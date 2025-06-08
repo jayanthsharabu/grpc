@@ -6,7 +6,9 @@ option go_package = "github.com/jayanthsharabu/grpc/calculator/proto";
 
 
 import "Sum.proto";
+import "max.proto";
 
 service CalculatorService {
     rpc Sum(SumRequest) returns (SumResponse);
+    rpc Max(stream MaxRequest) returns (stream MaxResponse);
 }
