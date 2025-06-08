@@ -22,5 +22,6 @@ func main() {
 
 	id := creatBlog(c)
 	readBlog(c, id)
-	readBlog(c, "456")
+	updateBlog(c, id)
+	readBlog(c, id)
 }
